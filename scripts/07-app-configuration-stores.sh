@@ -14,7 +14,7 @@ for id in $ids; do
   # Get the name of the app configuration store
   name=$(echo $id | awk -F '/' '{print $9}')
 
-  if ( "$disableLocalAuth" = "true" ); then
+  if [ "$disableLocalAuth" = "true" ]; then
     echo "Disabling local authentication for app configuration store [$name]..."
   else
     echo "Enabling local authentication for app configuration store [$name]..."
@@ -27,13 +27,13 @@ for id in $ids; do
     --body "{\"properties\": {\"disableLocalAuth\": $disableLocalAuth}}" 1> /dev/null
   
   if [ $? -eq 0 ]; then
-    if ( "$disableLocalAuth" = "true" ); then
+    if [ "$disableLocalAuth" = "true" ]; then
       echo "Successfully disabled local authentication for app configuration store [$name]"
     else
       echo "Successfully enabled local authentication for app configuration store [$name]"
     fi
   else
-    if ( "$disableLocalAuth" = "true" ); then
+    if [ "$disableLocalAuth" = "true" ]; then
       echo "Failed to disable local authentication for app configuration store [$name]"
     else
       echo "Failed to enable local authentication for app configuration store [$name]"

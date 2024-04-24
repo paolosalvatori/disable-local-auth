@@ -15,7 +15,7 @@ for id in $ids; do
   name=$(echo $id | awk -F '/' '{print $9}')
 
   # Disable or enable local authentication
-  if ( "$disableLocalAuth" = "true" ); then
+  if [ "$disableLocalAuth" = "true" ]; then
     echo "Disabling local authentication for cognitive services account [$name]..."
   else
     echo "Enabling local authentication for cognitive services account [$name]..."
@@ -27,13 +27,13 @@ for id in $ids; do
     --body "{\"properties\": {\"disableLocalAuth\": $disableLocalAuth}}" 1> /dev/null
   
   if [ $? -eq 0 ]; then
-    if ( "$disableLocalAuth" = "true" ); then
+    if [ "$disableLocalAuth" = "true" ]; then
       echo "Successfully disabled local authentication for cognitive services account [$name]"
     else
       echo "Successfully enabled local authentication for cognitive services account [$name]"
     fi
   else
-    if ( "$disableLocalAuth" = "true" ); then
+    if [ "$disableLocalAuth" = "true" ]; then
       echo "Failed to disable local authentication for cognitive services account [$name]"
     else
       echo "Failed to enable local authentication for cognitive services account [$name]"
