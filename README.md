@@ -6,7 +6,7 @@ If you're creating Azure resources using Terraform, Bicep, or ARM, you can set t
 
 - Azure Storage Accounts
 - Azure Service Bus Namespaces
-- Azure OpenAI Service Accounts
+- Azure Cognitive Service Accounts (OpenAI, Document Intelligence, Language, etc.)
 - Azure Event Grid Topics
 - Azure SQL Servers
 - Azure Cosmos DB Accounts
@@ -27,7 +27,7 @@ ids=$(az cosmosdb list --query '[].id' --output tsv)
 
 # Loop through each cosmos db instance
 for id in $ids; do
-  
+
   # Get the name of the cosmos db instance
   name=$(echo $id | awk -F '/' '{print $9}')
 
@@ -42,7 +42,7 @@ for id in $ids; do
     --url "https://management.azure.com${id}?api-version=$apiVersion" \
     --headers "Content-Type=application/json" \
     --body "{\"properties\": {\"disableLocalAuth\": $disableLocalAuth}}" 1> /dev/null
-  
+
   if [ $? -eq 0 ]; then
     if ( "$disableLocalAuth" = "true" ); then
       echo "Successfully disabled local authentication for cosmos db instance [$name]"
