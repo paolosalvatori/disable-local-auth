@@ -1,4 +1,4 @@
-# Bash Scripts to Disable Local Authentication for Azure Resources
+# Disable Local Authentication for Azure Resources via Script
 
 Azure provides [Microsoft Entra authentication](https://learn.microsoft.com/en-us/entra/identity/authentication/overview-authentication) support for all resources. This gives organizations control to disable local authentication methods and enforce Microsoft Entra authentication. This feature provides you with seamless integration when you require centralized control and management of identities and resource credentials.
 
