@@ -2,7 +2,7 @@
 
 # Variables
 disableLocalAuth="true"
-apiVersion="2023-05-01-preview"
+apiVersion="2021-11-01"
 
 # Get all sql server instances
 echo "Getting all sql server instances..."
@@ -21,10 +21,10 @@ for id in $ids; do
   fi
 
   # Disable or enable local authentication
-  az rest --method patch \
-    --url "https://management.azure.com${id}?api-version=$apiVersion" \
+  az rest --method put \
+    --url "https://management.azure.com/${id}/azureADOnlyAuthentications/Default?api-version=$apiVersion" \
     --headers "Content-Type=application/json" \
-    --body "{\"properties\": {\"disableLocalAuth\": $disableLocalAuth}}" 1> /dev/null
+    --body "{\"properties\": {\"azureAdOnlyAuthentication\": $disableLocalAuth}}" 1> /dev/null
   
   if [ $? -eq 0 ]; then
     if [ "$disableLocalAuth" = "true" ]; then
