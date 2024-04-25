@@ -11,6 +11,7 @@ If you're creating Azure resources using Terraform, Bicep, or ARM, you can set t
 - Azure SQL Servers
 - Azure Cosmos DB Accounts
 - Azure App Configuration Stores
+- Azure Event Hubs Namespaces
 
 As an example, here is the Bash script to disable local account authentication for Azure Cosmos DB Accounts:
 
